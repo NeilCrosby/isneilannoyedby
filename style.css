@@ -1,0 +1,43 @@
+#hd {
+    margin-top: 0;
+    padding: 1em 0.5em;
+}
+
+#hd h1 {
+    margin: 0;
+    font-size: 220%;
+    text-align: center;
+    padding: 0.5em 0 0.5em 0;
+}
+
+#hd h1 input {
+    width: 18em;
+}
+
+.hate_confirmation {
+    position: relative;
+}
+
+.hate_confirmation {
+    text-align: center;
+    background: red;
+    color: black;
+    margin: 0;
+    font-size: 300%;
+}
+
+.hate_no .hate_confirmation {
+    background: green;
+}
+
+/* Some evil hacks to stop displaying some Wikipedia things for now */
+
+#wikipedia .dablink,
+#wikipedia .infobox,
+#wikipedia table,
+#wikipedia .thumb,
+#wikipedia #protected-icon,
+#wikipedia dl,
+#wikipedia sup.reference {
+    display: none;
+}

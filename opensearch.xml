@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+   <ShortName>Is Neil Annoyed By?</ShortName>
+   <Description>Use this search to find out what Neil is annoyed by.</Description>
+   <Contact>neil@isneilannoyedby.com</Contact>
+   <Url type="text/html" 
+        template="http://isneilannoyedby.com/{searchTerms}"/>
+ </OpenSearchDescription>
