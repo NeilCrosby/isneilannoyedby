@@ -7,7 +7,6 @@ require_once('PhpCache.php');
 require_once('config.php');
 require_once('init.php');
 require_once('CurlCall.php');
-require_once('MediaWiki.php');
 
 function getClosestString($needle, $haystack, $caseSensitive = false) {
     if (!$caseSensitive) {
