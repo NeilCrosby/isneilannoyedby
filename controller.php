@@ -80,32 +80,6 @@ if ( $levPercentClosestYes <= $levPercentClosestNo ) {
 $tmpl = file_get_contents($file);
 $tmpl = str_replace('%%hated%%', htmlentities($hatedNoUnderscore), $tmpl);
 
-//$annoyingHtml = file_get_contents('annoying.tmpl');
-/*$annoyingHtml = "<h2>Annoying things...</h2><ul>";
-$aRandKeys = array_rand($aYes, $nYesToShow);
-foreach ( $aRandKeys as $key ) {
-    $title = $aYes[$key];
-    if ($temp = getDataFromArray($title, array('title'))) {
-        $title = $temp;
-    }
-    
-    $url = '/'.urlencode($title);
-    $annoyingHtml .= "<li><a href='$url'>$title</a></li>";
-}
-$annoyingHtml .= "</ul>";
-
-$annoyingHtml .= "<h2>Lovely things...</h2><ul>";
-$aRandKeys = array_rand($aNo, $nNoToShow);
-foreach ( $aRandKeys as $key ) {
-    $title = $aNo[$key];
-    if ($temp = getDataFromArray($title, array('title'))) {
-        $title = $temp;
-    }
-    
-    $url = '/'.urlencode($title);
-    $annoyingHtml .= "<li><a href='$url'>$title</a></li>";
-}
-$annoyingHtml .= "</ul>";*/
 $annoyingHtml = getHtmlAnnoyingAndLovely($aYes, $nYesToShow, $aNo, $nNoToShow);
 
 $tmpl = str_replace('%%annoying-things%%', $annoyingHtml, $tmpl);
@@ -154,9 +128,29 @@ if ( $img = getDataFromArray($result, array('photos', 'photo', '0')) ) {
 }
 
 
-// now we do the wikipedia stuff
-$wiki = new MediaWiki();
-$wikiText = $wiki->getArticleAsHtml( strrchr( $hatedOriginal, '_' ) ? $hatedOriginal : ucwords($hatedNoUnderscore) );
+require_once('externals/wikislurp/name/client/WikiSlurpClient.php');
+
+$query = strrchr( $hatedOriginal, '_' ) ? $hatedOriginal : ucwords($hatedNoUnderscore);
+
+$wiki = new WikiSlurpClient();
+$result = $wiki->getData(
+	//"http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/externals/wikislurp/name/index.php",
+    "http://".$_SERVER['SERVER_NAME'].":8888/externals/wikislurp/name/index.php", // hardcoding for now
+	$wikiSlurpSecret,
+	$query,
+	array(
+		'xpath'	  => '/html/body/p[position()<=3]',
+		'section' => 0,
+	)
+);
+
+if ( isset($result['error']) ) {
+    $wikiText = 'Nothing';
+} else {
+    $wikiText = $result['html']
+              . "<p><a href='".$result['url']."'>Read more about \"".$result['title']."\" on Wikipedia</a>.</p>";
+}
+
 // turn any wikipedia links into links for this site
 $wikiText = preg_replace( '/<a href="\/wiki\//', '<a href="/', $wikiText );
 
