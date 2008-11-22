@@ -52,6 +52,8 @@ $wikiApiFormat = "php";
 
 $wikiApiBaseUrl = "$wikiApiUrl?format=$wikiApiFormat";
 
+$wikiSlurpSecret = 'YOU NEED A WIKISLURP SECRET HERE';
+
 class Config {
     private static $WIKI_API_URL      = "http://en.wikipedia.org/w/api.php";
     private static $WIKI_API_FORMAT   = 'php';
