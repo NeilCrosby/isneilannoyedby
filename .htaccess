@@ -38,8 +38,8 @@ RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 # Dont't let people see config and cache files
 ###################################################
 RewriteRule ^\. - [G]
-RewriteRule ^config/.+ - [G,L]
-RewriteRule ^cache/.+ - [G,L]
+RewriteRule ^config/.+ - [F,L]
+RewriteRule ^cache/.+ - [F,L]
 
 ###################################################
 # Do not process images etc further
