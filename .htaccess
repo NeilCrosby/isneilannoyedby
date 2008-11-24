@@ -35,11 +35,20 @@ RewriteCond %{HTTP_HOST} ^www\.(.*)
 RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
 
 ###################################################
-# Dont't let people see config and cache files
+# Don't let people see config and cache files
+#
+# Shouldn't be blocking the root config or cache directories, since these
+# should be able to be used as "annoying" keywords, but using them with the
+# current set of rewrites sends mod_rewrite into a nosedive of unending
+# proportions.  It's something to do with the final rewrite in the file.
+# So, for now, we simply don't allow people to see if I'm annoyed by "config",
+# "cache", or "externals".
 ###################################################
-RewriteRule ^\. - [G]
-RewriteRule ^config/.+ - [F,L]
-RewriteRule ^cache/.+ - [F,L]
+RewriteRule ^\. - [F,L]
+RewriteRule ^config(/.*)?$ - [F,L]
+RewriteRule ^cache(/.*)?$ - [F,L]
+RewriteRule ^externals$ - [F,L]
+
 
 ###################################################
 # Do not process images etc further
