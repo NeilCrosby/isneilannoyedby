@@ -37,6 +37,10 @@
                             <p>
                                 MOAR coming soon.
                             </p>
+                            <p>
+                                This project is open, and
+                                <a href="http://github.com/NeilCrosby/isneilannoyedby/tree/master">available at GitHub</a>.
+                            </p>
                     </div>
                 </div>
             </div>
