@@ -2,7 +2,7 @@
     "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
-    <meta name="charset" content="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Is Neil Annoyed By?</title>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/reset-fonts-grids/reset-fonts-grids.css"> 
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.5.2/build/base/base-min.css">
