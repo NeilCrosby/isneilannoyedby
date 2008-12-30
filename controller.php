@@ -1,12 +1,10 @@
 <?php
 
-// third party requires
-require_once('PhpCache.php');
-
-// requires for this site
 require_once('config.php');
 require_once('init.php');
-require_once('CurlCall.php');
+
+// Shouldn't really pull deep into wikislurp like this, but I can so I will
+require_once('externals/wikislurp/externals/CurlCall/CurlCall.php');
 
 function getClosestString($needle, $haystack, $caseSensitive = false) {
     if (!$caseSensitive) {
@@ -127,14 +125,14 @@ if ( $img = getDataFromArray($result, array('photos', 'photo', '0')) ) {
 }
 
 
-require_once('externals/wikislurp/name/client/WikiSlurpClient.php');
+require_once('externals/wikislurp/client/WikiSlurpClient.php');
 
 $query = strrchr( $hatedOriginal, '_' ) ? $hatedOriginal : ucwords($hatedNoUnderscore);
 
 $wiki = new WikiSlurpClient();
 $result = $wiki->getData(
-	//"http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/externals/wikislurp/name/index.php",
-    "http://".$_SERVER['SERVER_NAME'].":8888/externals/wikislurp/name/index.php", // hardcoding for now
+	//"http://".$_SERVER['SERVER_NAME'].":".$_SERVER['SERVER_PORT']."/externals/wikislurp/index.php",
+    "http://".$_SERVER['SERVER_NAME'].":8888/externals/wikislurp/index.php", // hardcoding for now
 	$wikiSlurpSecret,
 	$query,
 	array(
