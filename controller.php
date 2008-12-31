@@ -1,7 +1,7 @@
 <?php
 
-require_once('config.php');
-require_once('init.php');
+require_once('config/config.php');
+require_once('includes/init.php');
 
 // Shouldn't really pull deep into wikislurp like this, but I can so I will
 require_once('externals/wikislurp/externals/CurlCall/CurlCall.php');
@@ -52,7 +52,7 @@ $closestNo = getClosestString( $hated, $aNo );
 $levPercentClosestYes = 100 * levenshtein( strtolower($hated), strtolower($closestYes) ) / strlen($hated);
 $levPercentClosestNo  = 100 * levenshtein( strtolower($hated), strtolower($closestNo) ) / strlen($hated);
 
-$file = 'yes.tmpl';
+$file = 'includes/yes.tmpl';
 if ( $levPercentClosestYes <= $levPercentClosestNo ) {
     if ( $levPercentClosestYes < 10 ) {
         $answerString = "Definitely Yes!";
@@ -65,7 +65,7 @@ if ( $levPercentClosestYes <= $levPercentClosestNo ) {
 } else {
     if ( $levPercentClosestNo < 10 ) {
         $answerString = "No!";
-        $file = 'no.tmpl';
+        $file = 'includes/no.tmpl';
         foreach ( $aNo as $item ) {
             if ( $closestNo == getDataFromArray($item, array('title')) ) {
                 $currentDescription = getDataFromArray($item, array('description'));

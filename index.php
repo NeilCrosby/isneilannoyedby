@@ -46,7 +46,7 @@
             </div>
             <div class="yui-b">
                 <?php
-                    require_once('config.php');
+                    require_once('config/config.php');
                     echo getHtmlAnnoyingAndLovely($aYes, $nYesToShow, $aNo, $nNoToShow);
                 ?>
             </div>
