@@ -58,6 +58,7 @@ class Config {
     private static $WIKI_API_URL      = "http://en.wikipedia.org/w/api.php";
     private static $WIKI_API_FORMAT   = 'php';
     private static $WIKI_API_BASE_URL = "http://en.wikipedia.org/w/api.php?format=php";
+    private static $CACHE_PATH        = "/tmp/cache/";
 
     public function get($string=null) {
         if (!$string) {

@@ -23,3 +23,7 @@ function removeMagicQuotes (&$postArray, $trim = false)
 }
 
 removeMagicQuotes($_GET);
+
+if ( !defined('CACHE_PATH') && Config::get('CACHE_PATH') ) {
+  define('CACHE_PATH', Config::get('CACHE_PATH'));
+}
