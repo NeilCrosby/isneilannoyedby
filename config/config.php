@@ -42,7 +42,7 @@ $aYes = array(
 );
 
 $imgApiUrl = "http://api.flickr.com/services/rest/";
-$imgApiKey = "YOU NEED A FLICKR API KEY HERE";
+$imgApiKey = "623e8829de07866a366a1c6176a99ff6";
 $imgApiFormat = "php_serial";
 
 $imgApiBaseUrl = "$imgApiUrl?api_key=$imgApiKey&format=$imgApiFormat";
@@ -52,7 +52,7 @@ $wikiApiFormat = "php";
 
 $wikiApiBaseUrl = "$wikiApiUrl?format=$wikiApiFormat";
 
-$wikiSlurpSecret = 'YOU NEED A WIKISLURP SECRET HERE';
+$wikiSlurpSecret = 'dfjgvtf97hrstos7aj0c598w560t7';
 
 class Config {
     private static $WIKI_API_URL      = "http://en.wikipedia.org/w/api.php";
